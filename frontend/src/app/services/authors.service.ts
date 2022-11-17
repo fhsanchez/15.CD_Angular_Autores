@@ -13,24 +13,25 @@ export class AuthorsService {
     return this._http.get(environment.servicioGetAllAuthors);
   }
 
-
   getAuthorById(id:String) {
     let url= `${environment.servicioGetByIdAuthor}/${id}`;
     return this._http.get(url);
   }
 
-
-  addAuthor(authorName:String){
+  newAuthor(authorName:String){
     let author = ({name: authorName})
     return this._http.post(environment.servicioNewAuthor,author);
   }
 
-  editAuthor(){
-
+  editAuthor(id:String, name: any) {
+    let url= `${environment.servicioUpdateAuthor}/${id}`;
+    return this._http.put(url, name);
   }
 
-  deleteAuthor() {
 
+  deleteAuthor(id:String) {
+    let url= `${environment.servicioDeleteAuthor}/${id}`;
+    return this._http.delete(url);
   }
 
 

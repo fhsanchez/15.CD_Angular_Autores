@@ -4,8 +4,7 @@ const authors = require("../controllers/authors");
 module.exports = function(app){
 
   // 1. Devuelve todas las Authors
-app.get("/getAll", (req, res) => {
-    console.log("Get All");
+app.get("/getAll", (req, res) => {   
     authors.getAll(req, res);
   });
   

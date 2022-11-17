@@ -32,9 +32,12 @@ export class HomeComponent implements OnInit {
 
   deleteAuthor(id: String) {
     console.log("id " + id);
+    let observable = this._authorservices.deleteAuthor(id);
+    observable.subscribe(data => {
+      this.listAuthors = data;
+      this.getAllAuthors();
+    });
   }
-
-
 
 
 }

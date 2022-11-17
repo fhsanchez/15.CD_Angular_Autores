@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
+  editAuthor : any;
+
   parametros: any;
   author_id: any;
   //author!: any;
@@ -24,21 +26,27 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.parametros = this._activatedRoute.params;
     this.author_id = this.parametros._value;
-    this.getAuthorById(this.author_id.id);
-
+    this.editAuthor.name = this.getAuthorById(this.author_id.id);
   }
 
   getAuthorById(id: String) {
-
-    //console.log(id);
     let observable = this._authorservices.getAuthorById(id);
-
     observable.subscribe(data => {
-      //console.log("Got  authors!", data);
       this.author = data;
-      //console.log(data);
-
     });
   }
+
+
+  onSubmit(){
+    const nameAuthor = { name: this.author.name};
+    const id = this.author_id.id;
+    let observable = this._authorservices.editAuthor(id, nameAuthor);
+    observable.subscribe(data => {
+      console.log("Edit our authors!", data);
+      console.log(data);
+    });
+  }
+
+
 
 }

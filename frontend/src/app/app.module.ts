@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthorsService } from './services/authors.service';
 import { HomeComponent } from './module-author/home/home.component';
+import { NewComponent } from './module-author/new/new.component';
+import { EditComponent } from './module-author/edit/edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NewComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
